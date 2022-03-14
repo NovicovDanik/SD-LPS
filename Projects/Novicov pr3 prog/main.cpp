@@ -9,6 +9,7 @@ using namespace std;
 int Citire(int n, int a[]); //La intrare: n - numarul de elemente; La iesire: a - tabloul de inaltime; Functia intoarce: 1 - OK; 0 - Eroare
 void Afisare(int n, int a[], char s[]); //La intrare: n - numarul de elemente, a - tabloul de inaltime;
 void Afisare(int n, int a[], char b[10][20]);
+void Afisare(int n, int a[], char s[], char g);
 int Minimum(int n , int a[]); //La intrare: n - numarul de elemente, a - tabloul de inaltime; La iesire: valoare minima;
 int Maximum(int n , int a[]); //La intrare: n - numarul de elemente, a - tabloul de inaltime; La iesire: valoare maxima;
 float Media(int n, int a[]); //La intrare: n - numarul de elemente, a - tabloul de inaltime; La iesire: valoare medie;
@@ -22,6 +23,7 @@ int Cautare(int n, int a[], int val); //La intrare: n - numarul de elemente, a -
 int Stergere(int &n, int a[], int val); //La intrare: n - numarul de elemente, a - tabloul de inaltime, val - element adaugat; La iesire: n - mareste cu 1, a - tabloul
 int Clasificare(int n, int a[], int m, int b[]); //La intrare: n - numarul de elemente, a - tabloul de inaltime, m - numarul de clasificari; La iesire: b - tabloul nou
 int Generare(int n, int a[]); //La intrare: n - numarul de elemente; La iesire: a - tabloul de inaltime; Functia intoarce: 1 - OK; 0 - Eroare
+bool Palindrome(int n);
 int main()
 {
     int key;
@@ -31,6 +33,7 @@ int main()
     int inaltime[NMAX] = { 171, 176, 174, 173, 172, 175, 177, 178, 180, 179 };
     char nume [][20] = { " pitic",  " inaltimea mica" ," inaltimea medie" , " inaltimea mare", " gigant"};
     int categorii[] = {0,0,0,0,0,0};
+    int gener[NMAX];
     cout <<"Introduceti cati oameni sunt intr-o echipa: " ;
     cin >> n ;
     Citire(n, inaltime);
@@ -88,8 +91,12 @@ int main()
                 Afisare(n, inaltime , " initial");
                 Clasificare(n, inaltime, m, categorii);
                 Afisare(m, categorii, nume);
-
-
+                break;
+            case 8:
+                Afisare(n, inaltime, " initial");
+                Generare(n, gener);
+                Afisare(n, gener, "generat", 'G');
+                break;
         }
         getch();
     } while(key);
@@ -131,6 +138,13 @@ void Afisare(int n, int a[] ,char s[])
     for (int i = 0 ; i < n; i++)
         cout << setw(12) << a[i];
         cout << endl;
+}
+void Afisare(int n, int a[], char s[], char g)
+{
+    cout << "\nTabloul de valori " << s << " \n";
+    for (int i = 0; i < n; i++)
+        cout << setw(12) << a[i];
+    cout << endl;
 }
 void Afisare(int n, int a[] ,char b[10][20])
 {
@@ -271,6 +285,22 @@ int Clasificare(int n, int a[], int m, int b[])
 }
 int Generare(int n, int a[])
 {
+    for(int num = 1, contor = 0; contor < n; num++)
+        if(Palindrome(num))
+        {
+            a[contor] = num;
+            contor++;
+        }
     return 1;
+}
+bool Palindrome(int n)
+{
+    int copia = n, invers = 0;
+    while(copia != 0)
+    {
+        invers = invers*10 + copia%10;
+        copia = copia/10;
+    }
+    return (invers == n);
 }
 
