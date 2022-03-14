@@ -8,6 +8,7 @@ using namespace std;
 //Interfata programului
 int Citire(int n, int a[]); //La intrare: n - numarul de elemente; La iesire: a - tabloul de inaltime; Functia intoarce: 1 - OK; 0 - Eroare
 void Afisare(int n, int a[], char s[]); //La intrare: n - numarul de elemente, a - tabloul de inaltime;
+void Afisare(int n, int a[], char b[10][20]);
 int Minimum(int n , int a[]); //La intrare: n - numarul de elemente, a - tabloul de inaltime; La iesire: valoare minima;
 int Maximum(int n , int a[]); //La intrare: n - numarul de elemente, a - tabloul de inaltime; La iesire: valoare maxima;
 float Media(int n, int a[]); //La intrare: n - numarul de elemente, a - tabloul de inaltime; La iesire: valoare medie;
@@ -19,24 +20,17 @@ int Adaugare(int &n, int a[], int val, int p);//inainte de p- pozitia
 int Adaugare(int &n, int a[], int val, int p, char);// dupa p
 int Cautare(int n, int a[], int val); //La intrare: n - numarul de elemente, a - tabloul de inaltime, val - element adaugat; La iesire: p - pozitia sau -1
 int Stergere(int &n, int a[], int val); //La intrare: n - numarul de elemente, a - tabloul de inaltime, val - element adaugat; La iesire: n - mareste cu 1, a - tabloul
-int Clasificare(int &n, int a[], int m, int b[]); //La intrare: n - numarul de elemente, a - tabloul de inaltime, m - numarul de clasificari; La iesire: b - tabloul nou
+int Clasificare(int n, int a[], int m, int b[]); //La intrare: n - numarul de elemente, a - tabloul de inaltime, m - numarul de clasificari; La iesire: b - tabloul nou
 int Generare(int n, int a[]); //La intrare: n - numarul de elemente; La iesire: a - tabloul de inaltime; Functia intoarce: 1 - OK; 0 - Eroare
 int main()
 {
     int key;
-    int n = 10, m;
+    int n = 10, poz = 5, m = 5;
     int ncaut;
     int val;
     int inaltime[NMAX] = { 171, 176, 174, 173, 172, 175, 177, 178, 180, 179 };
-    char nume [][20] = {" pitic", " inaltimea mica" ,"inaltimea normala" , "inaltimea mare", "gigant"};
-    int categorii[] = {0,0,0,0,0};
-    cout << "Proiect nr.3 elaborat de Novicov Daniil" << endl;
-    /*do
-    {
-        cout <<"Introduceti cati oameni sunt intr-o echipa: " ;
-        cin >> n;
-        Citire (n, inaltime);
-    } while (n == 0);*/
+    char nume [][20] = { " pitic",  " inaltimea mica" ," inaltimea medie" , " inaltimea mare", " gigant"};
+    int categorii[] = {0,0,0,0,0,0};
     cout <<"Introduceti cati oameni sunt intr-o echipa: " ;
     cin >> n ;
     Citire(n, inaltime);
@@ -93,7 +87,8 @@ int main()
             case 7:
                 Afisare(n, inaltime , " initial");
                 Clasificare(n, inaltime, m, categorii);
-                Afisare(m, categorii , nume);
+                Afisare(m, categorii, nume);
+
 
         }
         getch();
@@ -103,14 +98,6 @@ int main()
 }
 int Citire(int n, int a[])
 {
-    /*if (n == 0)
-        return 0;
-    for (int i=0; i<n ; i++)
-    {
-        cout << i << "inaltime: ";
-        cin >> a [i];
-    }
-    return 1;*/
     int key;
     int i;
         cout << "\n 1. De la tastatura";
@@ -126,14 +113,14 @@ int Citire(int n, int a[])
                  cout << "Inaltimea sportivului cu nr. " << i + 1 << ": ";
                  cin >> a[i];
         }
-        break;
+                 break;
              case 2:
                 for (i = 0; i < n; i++)
-                a[i] = rand() % 20 + 170;
+                a[i] = rand() % 50 + 150;
                 break;
              case 3:
                 for (i = 0; i < n; i++)
-                a[i] = i % 20 + 170;
+                a[i] = i % 50 + 150;
                 break;
     }
     return 1;
@@ -144,6 +131,13 @@ void Afisare(int n, int a[] ,char s[])
     for (int i = 0 ; i < n; i++)
         cout << setw(12) << a[i];
         cout << endl;
+}
+void Afisare(int n, int a[] ,char b[10][20])
+{
+    int i;
+    cout << "\nTabloul de categorii\n";
+    for (int i = 0 ; i < n; i++)
+        cout << "Sunt "<< a[i]<< " sportivi in categoria" << b[i] << endl;
 }
 int Minimum(int n , int a[])
 {
@@ -264,16 +258,14 @@ int Stergere(int &n, int a[], int val)
 }
 int Clasificare(int n, int a[], int m, int b[])
 {
-    int i,j, m = 5;
-    int limite[] = {150, 160, 170 ,180 ,190};
-    for ( i = 0; i < n; i++)
+    int i,j;
+    int limite[] = {150, 170, 185 ,195, 200};
+    for ( i = 0; i < m; i++)
         b[m]=0;
     for ( i = 0; i < n; i++)
-         for ( j = 0; j < n; j++)
-    if (a[i] <= limite[j]) {
-     categorii[j]++;
-    break;
-    }
+         for ( j = 0; j < m; j++)
+    if (a[i] <= limite[j]) {b[j]++ ; break;}
+
 
     return 1;
 }
