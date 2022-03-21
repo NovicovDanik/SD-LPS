@@ -7,11 +7,11 @@
 using namespace std;
 //Interfata programului
 int Citire(int n, int a[]); //La intrare: n - numarul de elemente; La iesire: a - tabloul de inaltime; Functia intoarce: 1 - OK; 0 - Eroare
-void Afisare(int n, int a[], char s[]); //La intrare: n - numarul de elemente, a - tabloul de inaltime;
+void Afisare(int l, int c, int a[NMAX][NMAX], char s[]); //La intrare: n - numarul de elemente, a - tabloul de inaltime;
 void Afisare(int n, int a[], char b[10][20]);
 //void Afisare(int n, int a[], char s[], char gen);
-int Minimum(int n , int a[]); //La intrare: n - numarul de elemente, a - tabloul de inaltime; La iesire: valoare minima;
-int Maximum(int n , int a[]); //La intrare: n - numarul de elemente, a - tabloul de inaltime; La iesire: valoare maxima;
+int Minimum(int l, int c, int a[NMAX][NMAX]); //La intrare: n - numarul de elemente, a - tabloul de inaltime; La iesire: valoare minima;
+int Maximum(int l, int c, int a[NMAX][NMAX]); //La intrare: n - numarul de elemente, a - tabloul de inaltime; La iesire: valoare maxima;
 float Media(int n, int a[]); //La intrare: n - numarul de elemente, a - tabloul de inaltime; La iesire: valoare medie;
 int Sortare(int n, int a[]);//La intrare: n - numarul de elemente, a - tabloul de inaltime; La iesire: a - tabloul aranjat; Functia intoarce: 1 - OK; 0 - Eroare
 int Rotire(int n, int a[]); //La intrare: n - numarul de elemente, a - tabloul de inaltime; La iesire: a - tabloul rotit; Functia intoarce: 1 - OK; 0 - Eroare
@@ -30,38 +30,35 @@ int main()
     int n = 10, poz = 5, m = 5;
     int ncaut;
     int val;
-    int inaltime[NMAX] = { 171, 176, 174, 173, 172, 175, 177, 178, 180, 179 };
+    int l = 3 , c = 3;
+    int inaltime[NMAX][NMAX] = { {171, 176, 174},{173, 172, 175},{177, 178, 180} };
     char nume [][20] = { " pitic",  " inaltimea mica" ," inaltimea medie" , " inaltimea mare", " gigant"};
     int categorii[] = {0,0,0,0,0,0};
     int gener[NMAX];
-    cout <<"Introduceti cati oameni sunt intr-o echipa: " ;
+    /*cout <<"Introduceti cati oameni sunt intr-o echipa: " ;
     cin >> n ;
-    Citire(n, inaltime);
+    Citire(n, inaltime);*/
     cout << "Tabloul de inaltime ocupa: " << sizeof(inaltime) << " Bt" << endl;
     do
     {
         system("cls");
-        cout << "Proiect nr.3 elaborat de Novicov Daniil" << endl;
+        cout << "Proiect nr.4 elaborat de Novicov Daniil" << endl;
         cout << "Tema: Inaltimile sportivilor la o competitie" << endl;
-        cout << "\n1. De determinat intr-un tabel de numere inaltimea minima si inaltimea maxima";
-        cout << "\n2. De determinat intr-un tabel de numere inaltimea medie";
-        cout << "\n3. De aranjat un tabel de inaltimea in ordine crescatoare sau descrescatoare";
-        cout << "\n4. De efectuat rotirea la stanga a elementelor tabelului de 5 ori";
-        cout << "\n5. De adaugat date in tabelul de numerele";
-        cout << "\n6. De sters date din tabelul de numerele";
-        cout << "\n7. Clasificare(nr. de sportivi cu inaltimea in limitele indicate)";
-        cout << "\n8. Generare";
-        cout << "\n0. Stop";
-        cout << "\n\n\t Alegeti de la 0 la 8 -> ";
+        cout << "\n1. De determinat intr-o matrice valorile minima si maxima si pozitiile lor";
+        cout << "\n2. De interschimbat 2 linii (variantele impare)";
+        cout << "\n3. De adaugat o linie si / sau coloana, de completat cu caracteristica conform variantei";
+        cout << "\n4. De aranjat o matrice dupa linia sau coloana adaugata";
+        cout << "\n5. De generat o matrice conform variantei";
+        cout << "\n\n\t Alegeti de la 0 la 5 -> ";
         cin >> key;
         switch(key)
         {
             case 1:
-                Afisare(n, inaltime, " inital");
-                cout <<"\nCea mai mica inaltimea este: " << Minimum(n, inaltime);
-                cout <<"\nCea mai mare inaltimea este: " << Maximum(n, inaltime);
+                Afisare(l, c, inaltime, " inital");
+                Minimum(l, c, inaltime);
+                Maximum(l, c, inaltime);
                 break;
-            case 2:
+        /*case 2:
                 Afisare (n,inaltime, " inital");
                 cout << "\nInaltimea media este: " << Media(n, inaltime);
                 break;
@@ -84,7 +81,7 @@ int main()
                 cout << "\n Introduceti ce valoare trebuie de sters: ";
                 cin >> ncaut;
                 if ((val = Cautare(n, inaltime, ncaut)) != -1)
-                Stergere(n, inaltime, /*val*/Cautare(n, inaltime, ncaut));
+                Stergere(n, inaltime, Cautare(n, inaltime, ncaut));
                 Afisare(n, inaltime, " sters");
                 break;
             case 7:
@@ -95,7 +92,7 @@ int main()
             case 8:
                 Generare(n, gener);
                 Afisare(n, gener, "generat");
-                break;
+                break;*/
         }
         getch();
     } while(key);
@@ -131,12 +128,17 @@ int Citire(int n, int a[])
     }
     return 1;
 }
-void Afisare(int n, int a[] ,char s[])
+void Afisare(int l, int c, int a[NMAX][NMAX], char s[])
 {
-    cout << "\nTabloul de inaltime " << s <<"\n";
-    for (int i = 0 ; i < n; i++)
-        cout << setw(8) << a[i];
+    cout << "\nMatricea de inaltime " << s << " \n";
+    for (int i = 0; i < l; i++)
+    {
+        for (int j = 0; j < c; j++)
+        {
+            cout << setw(12) << a[i][j];
+        }
         cout << endl;
+    }
 }
 void Afisare(int n, int a[], char s[], char gen)
 {
@@ -152,20 +154,34 @@ void Afisare(int n, int a[] ,char b[10][20])
     for (int i = 0 ; i < n; i++)
         cout << "Sunt "<< a[i]<< " sportivi in categoria" << b[i] << endl;
 }
-int Minimum(int n , int a[])
+int Minimum(int l, int c, int a[NMAX][NMAX])
 {
-    int aux = a[0];
-    if (n <= 0) return 0;
-    for(int i = 1; i < n; i++)
-        if (a[i] < aux) aux = a[i];
+    int aux;
+    for (int i = 0; i < l; i++)
+    {
+        aux = a[i][0];
+        for (int j = 0; j < c; j++)
+        {
+            if(aux > a[i][j])
+                aux = a[i][j];
+        }
+        cout << "\nInaltimea minima sportivului cu nr." << i+1 << " este: " << aux << endl;
+    }
     return aux;
 }
-int Maximum(int n , int a[])
+int Maximum(int l, int c, int a[NMAX][NMAX])
 {
-    int aux = a[0];
-    if (n <= 0) return 0;
-    for(int i = 1; i < n; i++)
-        if (a[i] > aux) aux = a[i];
+    int aux;
+    for (int i = 0; i < l; i++)
+    {
+        aux = a[i][0];
+        for (int j = 0; j < c; j++)
+        {
+            if(aux < a[i][j])
+                aux = a[i][j];
+        }
+        cout << "\nInaltimea maxima sportivului cu nr." << i+1 << " este: " << aux << endl;
+    }
     return aux;
 }
 float Media(int n, int a[])
@@ -302,4 +318,3 @@ bool Palindrome(int n)
     }
     return (invers == n);
 }
-
