@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1648567587 source:c:\users\katreen\desktop\”роки\”ник\structuri discrete\programs\projects\novicov pr5(win)\main.cpp
+	<iostream>
+	<string.h>
+	<cstdlib>
+	<cstdio>
+	<iomanip>
+
