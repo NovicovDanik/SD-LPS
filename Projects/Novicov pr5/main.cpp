@@ -8,9 +8,9 @@
 using namespace std;
 //interfata
 int NrCuvinte(char sir[]);
-int CuvinteLungMare6(char sir[]);
+int NrCuvinteLungMare6(char sir[]);
 int NrCuvinteLungMic5(char sir[]);
-int NrCuvinte();
+int Cuvinte();
 int CuvinteLungMare6();
 int CuvinteLungMic5();
 int TransferCuvinteLungMic5(char sir[]);
@@ -27,12 +27,12 @@ int main()
     cout << "Tema: Siruri de caractere. Fisiere text" << endl;
     do {
         cout << "\n 1. Numarul de cuvinte dintr-o fraza";
-        cout << "\n 2. Cuvintele lungimea cărora e mai mare ca 6 dintr- o fraza";
+        cout << "\n 2. Cuvintele lungimea carora e mai mare ca 6 dintr- o fraza";
         cout << "\n 3. Cuvinte lungimea carora e mai mica decat 5";
         cout << "\n 4. Numarul de cuvinte dintr-un fisier";
-        cout << "\n 5. Cuvintele lungimea cărora e mai mare ca 6 dintr-un fisier";
+        cout << "\n 5. Cuvintele lungimea carora e mai mare ca 6 dintr-un fisier";
         cout << "\n 6. Cuvinte lungimea carora e mai mica decat 5 dintr-un fisier";
-        cout << "\n 7. De înscris în alt fişier text cuvintele, care e mai mica decat 5";
+        cout << "\n 7. De inscris in alt fisier text cuvintele, care e mai mica decat 5";
         cout << "\n 8. De sters cuvintele de lungime mai mica decat 5";
         cout << "\n 9. Copia de Rezerva a fisierului";
         cout << "\n 0. Stop";
@@ -49,18 +49,18 @@ int main()
             case 2:
                 cout << "Fraza initiala \n";
                 puts(fraza);
-                if (int n = CuvinteLungMare6(fraza)) cout << "\nIn total " << n << " cuvinte\n";
+                if (int n = NrCuvinteLungMare6(fraza)) cout << "\nIn total " << n << " cuvinte\n";
                 else  cout <<"Nu-s cuvinte\n";
                 break;
             case 3:
                 cout << "Fraza initiala \n";
                 puts(fraza);
-                if (int n = CuvinteLungMic5(fraza)) cout << "\nIn total " << n << " cuvinte\n";
+                if (int n = NrCuvinteLungMic5(fraza)) cout << "\nIn total " << n << " cuvinte\n";
                 else  cout <<"Nu-s cuvinte\n";
                 break;
         }
         fflush(stdin); //o4istka bufera
-        cout << "Apasa-ma";
+        cout << "Apasa un buton";
     getchar();
     } while(opt);
     return 0;
@@ -79,45 +79,37 @@ int NrCuvinte(char sir[])
 
     return n;
 }
-int CuvinteLungMare6(char sir[])
+int NrCuvinteLungMare6(char sir[])
 {
     char copia[81], *cuvint;
     int n = 0;
     strcpy(copia, sir);
     if ((cuvint = strtok(copia, " ,.:\n\t-")) == NULL) return 0;
-    n = 1;
+    n = 0;
     while ((cuvint = strtok(NULL, " ,.:\n\t-")) != NULL)
-        if (strlen(cuvint) >=5) {
+        if (strlen(cuvint) > 6) {
         n++;
-        cout << cuvint;
+        cout << "\t" << cuvint;
 }
-    while ((cuvint = strtok(NULL, " ,.:\n\t-")) != NULL)
-        if (strlen(cuvint) >=5) {
-        n++;
-        cout << cuvint;
-}
+
     return n;
 }
-int CuvinteLungMic5(char sir[])
+int NrCuvinteLungMic5(char sir[])
 {
     char copia[81], *cuvint;
     int n = 0;
     strcpy(copia, sir);
     if ((cuvint = strtok(copia, " ,.:\n\t-")) == NULL) return 0;
-    n = 1;
+    n = 0;
     while ((cuvint = strtok(NULL, " ,.:\n\t-")) != NULL)
-        if (strlen(cuvint) >=5 ) {
+        if (strlen(cuvint) < 5) {
         n++;
-        cout << cuvint;
+        cout << "\t" << cuvint;
 }
-    while ((cuvint = strtok(NULL, " ,.:\n\t-")) != NULL)
-        if (cstrlen(cuvint) >=5) {
-        n++;
-        cout << cuvint;
-}
+
     return n;
 }
-int NrCuvinte()
+int Cuvinte()
 {
     return 1;
 }
@@ -125,7 +117,7 @@ int CuvinteLungMare6()
 {
     return 1;
 }
-int NrCuvinteLungMic5()
+int CuvinteLungMic5()
 {
     return 1;
 }
@@ -145,5 +137,3 @@ void CopiaRezerva(char nume[])
 {
 
 }
-
-
