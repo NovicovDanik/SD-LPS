@@ -15,7 +15,7 @@ int CuvinteLungMare6();
 int CuvinteLungMic5();
 int TransferCuvinteLungMic5(char sir[]);
 int EliminaCuvinteLungMic5(char sir[]);
-void ViewFile(char nume[]);
+int ViewFile(char nume[]);
 void CopiaRezerva(char nume[]);
 
 
@@ -27,12 +27,12 @@ int main()
     cout << "Tema: Siruri de caractere. Fisiere text" << endl;
     do {
         cout << "\n 1. Numarul de cuvinte dintr-o fraza";
-        cout << "\n 2. Cuvintele lungimea cărora e mai mare ca 6 dintr- o fraza";
+        cout << "\n 2. Cuvintele lungimea carora e mai mare ca 6 dintr- o fraza";
         cout << "\n 3. Cuvinte lungimea carora e mai mica decat 5";
         cout << "\n 4. Numarul de cuvinte dintr-un fisier";
-        cout << "\n 5. Cuvintele lungimea cărora e mai mare ca 6 dintr-un fisier";
+        cout << "\n 5. Cuvintele lungimea carora e mai mare ca 6 dintr-un fisier";
         cout << "\n 6. Cuvinte lungimea carora e mai mica decat 5 dintr-un fisier";
-        cout << "\n 7. De înscris în alt fişier text cuvintele, care e mai mica decat 5";
+        cout << "\n 7. De inscris in alt fisier text cuvintele, care e mai mica decat 5";
         cout << "\n 8. De sters cuvintele de lungime mai mica decat 5";
         cout << "\n 9. Copia de Rezerva a fisierului";
         cout << "\n 0. Stop";
@@ -58,9 +58,13 @@ int main()
                 if (int n = NrCuvinteLungMic5(fraza)) cout << "\nIn total " << n << " cuvinte\n";
                 else  cout <<"Nu-s cuvinte\n";
                 break;
+            case 4:
+                cout << "Fraza initiala din fisier: \n";
+                ViewFile("Novicov pr5.in");
+                break;
         }
         fflush(stdin); //o4istka bufera
-        cout << "Apasa-ma";
+        cout << "Apasa un buton";
     getchar();
     } while(opt);
     return 0;
@@ -89,12 +93,7 @@ int NrCuvinteLungMare6(char sir[])
     while ((cuvint = strtok(NULL, " ,.:\n\t-")) != NULL)
         if (strlen(cuvint) > 6) {
         n++;
-        cout << cuvint;
-}
-    while ((cuvint = strtok(NULL, " ,.:\n\t-")) != NULL)
-        if (strlen(cuvint) > 6) {
-        n++;
-        cout << cuvint;
+        cout << "\t" << cuvint;
 }
 
     return n;
@@ -109,13 +108,9 @@ int NrCuvinteLungMic5(char sir[])
     while ((cuvint = strtok(NULL, " ,.:\n\t-")) != NULL)
         if (strlen(cuvint) < 5) {
         n++;
-        cout << cuvint;
+        cout << "\t" << cuvint;
 }
-    while ((cuvint = strtok(NULL, " ,.:\n\t-")) != NULL)
-        if (strlen(cuvint) < 5) {
-        n++;
-        cout << cuvint;
-}
+
     return n;
 }
 int Cuvinte()
@@ -138,9 +133,24 @@ int EliminaCuvinteLungMic5(char sir[])
 {
     return 1;
 }
-void ViewFile(char nume[])
+int ViewFile(char nume[])
 {
-
+   char fraza[81];
+    FILE *f;
+    f = fopen(nume, "r");
+    if (f == NULL)
+    {
+        cout << "Eroare la deschidere";
+        return 0;
+    }
+    while (!feof(f))
+    {
+        //fscanf(f, "%");
+        fgets(fraza, 81, f);
+    }
+    fclose(f);
+    cout << fraza;
+    return 1;
 }
 void CopiaRezerva(char nume[])
 {
