@@ -4,6 +4,8 @@
 #include <cstdio>
 #include <iomanip>
 //#include <conio.h>
+#define LMAX 100
+
 
 using namespace std;
 //interfata
@@ -26,6 +28,7 @@ int main()
     cout << "Proiect nr.5 elaborat de Novicov Daniil" << endl;
     cout << "Tema: Siruri de caractere. Fisiere text" << endl;
     do {
+        //system("cls");
         cout << "\n 1. Numarul de cuvinte dintr-o fraza";
         cout << "\n 2. Cuvintele lungimea carora e mai mare ca 6 dintr- o fraza";
         cout << "\n 3. Cuvinte lungimea carora e mai mica decat 5";
@@ -43,24 +46,44 @@ int main()
             case 1:
                 cout << "Fraza initiala \n";
                 puts(fraza);
-                if (int n = NrCuvinte(fraza)) cout << "\nIn total " << n << " cuvinte\n";
+                if (int n = NrCuvinte(fraza))
+                cout << "\nIn total " << n << " cuvinte\n";
                 else  cout <<"Nu-s cuvinte\n";
                 break;
             case 2:
                 cout << "Fraza initiala \n";
                 puts(fraza);
-                if (int n = NrCuvinteLungMare6(fraza)) cout << "\nIn total " << n << " cuvinte\n";
+                if (int n = NrCuvinteLungMare6(fraza))
+                cout << "\nIn total " << n << " cuvinte\n";
                 else  cout <<"Nu-s cuvinte\n";
                 break;
             case 3:
                 cout << "Fraza initiala \n";
                 puts(fraza);
-                if (int n = NrCuvinteLungMic5(fraza)) cout << "\nIn total " << n << " cuvinte\n";
+                if (int n = NrCuvinteLungMic5(fraza))
+                cout << "\nIn total " << n << " cuvinte\n";
                 else  cout <<"Nu-s cuvinte\n";
                 break;
             case 4:
                 cout << "Fraza initiala din fisier: \n";
-                ViewFile("Novicov pr5.in");
+                ViewFile("frazfile.in");
+                if (Cuvinte() !=0)
+                cout << "\nIn total " << Cuvinte() << " cuvinte\n";
+                else  cout <<"Nu-s cuvinte\n";
+                break;
+            case 5:
+                cout << "Fraza initiala din fisier: \n";
+                ViewFile("frazfile.in");
+                if (int n = CuvinteLungMare6())
+                cout << "\nIn total " << n << " cuvinte\n";
+                else  cout <<"Nu-s cuvinte\n";
+                break;
+            case 6:
+                cout << "Fraza initiala din fisier: \n";
+                ViewFile("frazfile.in");
+                if (int n = CuvinteLungMic5())
+                cout << "\nIn total " << n << " cuvinte\n";
+                else  cout <<"Nu-s cuvinte\n";
                 break;
         }
         fflush(stdin); //o4istka bufera
@@ -95,7 +118,6 @@ int NrCuvinteLungMare6(char sir[])
         n++;
         cout << "\t" << cuvint;
 }
-
     return n;
 }
 int NrCuvinteLungMic5(char sir[])
@@ -110,20 +132,40 @@ int NrCuvinteLungMic5(char sir[])
         n++;
         cout << "\t" << cuvint;
 }
-
     return n;
 }
 int Cuvinte()
 {
-    return 1;
+    FILE *f;
+    char sir[LMAX];
+    int n = 0;
+    f = fopen("frazfile.in", "r");
+    while(fgets(sir, LMAX-1, f) != NULL)
+        n+= NrCuvinte(sir);
+    fclose(f);
+    return n;
 }
 int CuvinteLungMare6()
 {
-    return 1;
+    FILE *f;
+    char sir[LMAX];
+    int n = 0;
+    f = fopen("frazfile.in", "r");
+    while(fgets(sir, LMAX-1, f) != NULL)
+        n+= NrCuvinteLungMare6(sir);
+    fclose(f);
+    return n;
 }
 int CuvinteLungMic5()
 {
-    return 1;
+    FILE *f;
+    char sir[LMAX];
+    int n = 0;
+    f = fopen("frazfile.in", "r");
+    while(fgets(sir, LMAX-1, f) != NULL)
+        n+= NrCuvinteLungMic5(sir);
+    fclose(f);
+    return n;
 }
 int TransferCuvinteLungMic5(char sir[])
 {
@@ -135,22 +177,12 @@ int EliminaCuvinteLungMic5(char sir[])
 }
 int ViewFile(char nume[])
 {
-   char fraza[81];
     FILE *f;
+    char sir [LMAX];
     f = fopen(nume, "r");
-    if (f == NULL)
-    {
-        cout << "Eroare la deschidere";
-        return 0;
-    }
-    while (!feof(f))
-    {
-        //fscanf(f, "%");
-        fgets(fraza, 81, f);
-    }
+    while (fgets(sir, LMAX-1, f) != NULL)
+        cout << sir;
     fclose(f);
-    cout << fraza;
-    return 1;
 }
 void CopiaRezerva(char nume[])
 {
