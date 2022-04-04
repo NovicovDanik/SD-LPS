@@ -33,12 +33,10 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="frazfile.in" />
+		<Unit filename="frazfile1.in" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
-			<code_completion />
-			<envvars />
-			<debugger />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

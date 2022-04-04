@@ -4,7 +4,7 @@
 #include <cstdio>
 #include <iomanip>
 //#include <conio.h>
-#define LMAX 100
+#define LMAX 120
 
 
 using namespace std;
@@ -15,10 +15,10 @@ int NrCuvinteLungMic5(char sir[]);
 int Cuvinte();
 int CuvinteLungMare6();
 int CuvinteLungMic5();
-int TransferCuvinteLungMic5(char sir[]);
+int TransferCuvinteLungMic5(/*char sir[]*/);
 int EliminaCuvinteLungMic5(char sir[]);
 int ViewFile(char nume[]);
-void CopiaRezerva(char nume[]);
+int CopiaRezerva(char nume[]);
 
 
 int main()
@@ -85,10 +85,24 @@ int main()
                 cout << "\nIn total " << n << " cuvinte\n";
                 else  cout <<"Nu-s cuvinte\n";
                 break;
+            case 7:
+                cout << "Fraza initiala din fisier: \n";
+                ViewFile("frazfile.in");
+                TransferCuvinteLungMic5();
+                break;
+            case 8:
+                cout << "Fraza initiala din fisier: \n";
+                ViewFile("frazfile.in");
+                EliminaCuvinteLungMic5("frazfile.in");
+                break;
+            case 9:
+                CopiaRezerva("frazfile.in");
+                cout << "Copia a fost facuta";
+                break;
         }
         fflush(stdin); //o4istka bufera
-        cout << "Apasa un buton";
-    getchar();
+        /*cout << "Apasa un buton";
+    getchar();*/
     } while(opt);
     return 0;
 }
@@ -116,7 +130,7 @@ int NrCuvinteLungMare6(char sir[])
     while ((cuvint = strtok(NULL, " ,.:\n\t-")) != NULL)
         if (strlen(cuvint) > 6) {
         n++;
-        cout << "\t" << cuvint;
+        cout << " " << cuvint;
 }
     return n;
 }
@@ -126,11 +140,12 @@ int NrCuvinteLungMic5(char sir[])
     int n = 0;
     strcpy(copia, sir);
     if ((cuvint = strtok(copia, " ,.:\n\t-")) == NULL) return 0;
-    n = 0;
+    n = 1;
+    cout << cuvint;
     while ((cuvint = strtok(NULL, " ,.:\n\t-")) != NULL)
         if (strlen(cuvint) < 5) {
         n++;
-        cout << "\t" << cuvint;
+        cout << " " << cuvint;
 }
     return n;
 }
@@ -167,9 +182,26 @@ int CuvinteLungMic5()
     fclose(f);
     return n;
 }
-int TransferCuvinteLungMic5(char sir[])
+int TransferCuvinteLungMic5(/*char sir[]*/)
 {
-    return 1;
+    FILE *f;
+    FILE *s;
+    char fraza[LMAX], copia[LMAX], *cuvint;
+    f = fopen("frazfile.in", "r");
+    s = fopen("frazfile1.in", "w");
+    while(fgets(fraza, LMAX-1, f) !=NULL)
+    {
+    strcpy(copia, fraza);
+    if ((cuvint = strtok(copia, " ,.:\n\t-")) == NULL) return 0;
+    if (strlen(cuvint) < 5) fputs(cuvint, s);
+    while ((cuvint = strtok(NULL, " ,.:\n\t-")) != NULL) {
+            fputs(" ", s);
+        if (strlen(cuvint) < 5) fputs(cuvint, s);
+    }
+    }
+    fclose(f);
+    fclose(s);
+    return 0;
 }
 int EliminaCuvinteLungMic5(char sir[])
 {
@@ -184,7 +216,18 @@ int ViewFile(char nume[])
         cout << sir;
     fclose(f);
 }
-void CopiaRezerva(char nume[])
+int CopiaRezerva(char nume[])
 {
-
+    FILE *f;
+    FILE *rezerv;
+    char sir[LMAX];
+    f = fopen(nume, "r");
+    rezerv = fopen("rezerv.in", "w");
+    while(fgets(sir, LMAX - 1, f) != NULL)
+    {
+        fputs(sir, rezerv);
+    }
+    fclose(f);
+    fclose(rezerv);
+    return 1;
 }
