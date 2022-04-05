@@ -86,8 +86,8 @@ int main()
                 else  cout <<"Nu-s cuvinte\n";
                 break;
             case 7:
-                cout << "Fraza initiala din fisier: \n";
-                ViewFile("frazfile.in");
+                cout << "Cuvinte lumgimea carora e mai mica decat 5 au fost scrise in fisier \n";
+                //ViewFile("frazfile.in");
                 TransferCuvinteLungMic5();
                 break;
             case 8:
@@ -185,22 +185,22 @@ int CuvinteLungMic5()
 int TransferCuvinteLungMic5(/*char sir[]*/)
 {
     FILE *f;
-    FILE *s;
+    FILE *t;
     char fraza[LMAX], copia[LMAX], *cuvint;
     f = fopen("frazfile.in", "r");
-    s = fopen("frazfile1.in", "w");
+    t = fopen("frazfile1.in", "w");
     while(fgets(fraza, LMAX-1, f) !=NULL)
     {
     strcpy(copia, fraza);
     if ((cuvint = strtok(copia, " ,.:\n\t-")) == NULL) return 0;
-    if (strlen(cuvint) < 5) fputs(cuvint, s);
+    if (strlen(cuvint) < 5) fputs(cuvint, t);
     while ((cuvint = strtok(NULL, " ,.:\n\t-")) != NULL) {
-            fputs(" ", s);
-        if (strlen(cuvint) < 5) fputs(cuvint, s);
+            fputs(" ", t);
+        if (strlen(cuvint) < 5) fputs(cuvint, t);
     }
     }
     fclose(f);
-    fclose(s);
+    fclose(t);
     return 0;
 }
 int EliminaCuvinteLungMic5(char sir[])
@@ -219,15 +219,15 @@ int ViewFile(char nume[])
 int CopiaRezerva(char nume[])
 {
     FILE *f;
-    FILE *rezerv;
+    FILE *rez;
     char sir[LMAX];
     f = fopen(nume, "r");
-    rezerv = fopen("rezerv.in", "w");
+    rez = fopen("rezerv.in", "w");
     while(fgets(sir, LMAX - 1, f) != NULL)
     {
-        fputs(sir, rezerv);
+        fputs(sir, rez);
     }
     fclose(f);
-    fclose(rezerv);
+    fclose(rez);
     return 1;
 }
