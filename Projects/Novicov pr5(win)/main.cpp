@@ -9,6 +9,7 @@
 
 using namespace std;
 //interfata
+int Citire(char fraza[]);
 int NrCuvinte(char sir[]);
 int NrCuvinteLungMare6(char sir[]);
 int NrCuvinteLungMic5(char sir[]);
@@ -44,6 +45,8 @@ int main()
         switch(opt)
         {
             case 1:
+                cout << "Introduceti o fraza:\n";
+                fflush(stdin); gets(fraza);
                 cout << "Fraza initiala \n";
                 puts(fraza);
                 if (int n = NrCuvinte(fraza))
@@ -103,10 +106,15 @@ int main()
         fflush(stdin); //o4istka bufera
         /*cout << "Apasa un buton";
     getchar();*/
+
     } while(opt);
     return 0;
 }
 
+int Citire(char fraza[])
+{
+    return 1;
+}
 
 int NrCuvinte(char sir[])
 {
