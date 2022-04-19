@@ -32,7 +32,11 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="actualizare.cpp" />
+		<Unit filename="liste.cpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="nsportivi.h" />
+		<Unit filename="service.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

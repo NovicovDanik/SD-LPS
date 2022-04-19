@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1650362267 source:d:\novicov daniil is11z\sd-lps-main\projects\novicov pr6\liste.cpp
+	<stdio.h>
+	<string.h>
+	<cstdlib>
+	<conio.h>
+	"nsportivi.h"
+
+1650355903 source:d:\novicov daniil is11z\sd-lps-main\projects\novicov pr6\service.cpp
+
+1650361838 source:d:\novicov daniil is11z\sd-lps-main\projects\novicov pr6\main.cpp
+	<iostream>
+	<cstdlib>
+	<conio.h>
+
+1650362243 source:d:\novicov daniil is11z\sd-lps-main\projects\novicov pr6\actualizare.cpp
+	<stdio.h>
+	<string.h>
+	<cstdlib>
+	<conio.h>
+	"nsportivi.h"
+
+1650360842 d:\novicov daniil is11z\sd-lps-main\projects\novicov pr6\nsportivi.h
+
