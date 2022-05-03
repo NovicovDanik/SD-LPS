@@ -50,7 +50,7 @@ void Afisare()
      while(fread(&sport, sizeof(Sport),1, f)>0)
      {
          n++;
-         printf("\n%c%2d %c %d %c%-25.25s%c%02d.%02d.%4d%6c%-15.15s%c %3d %c %3d %c %d %c",
+         printf("\n%c%3d%c %d %c%-25.25s%c%02d.%02d.%4d%6c%-15.15s%c %3d %c %3d %c %d %c",
             186, n, 179, sport.id, 179, sport.nume, 179, sport.dn.zi,sport.dn.luna,sport.dn.an, 179, sport.dis ,179, sport.inalt, 179, sport.greu, 179, sport.categoria, 186);
      }
      Linia(200, 205, 207, 188);
@@ -63,16 +63,16 @@ void Adaugare()
     char fam[15];
     ft = fopen("file2.txt", "r");
     f = fopen("file.in", "ab");
-    while(fscanf(ft, "%d %s %s %d %d %d %s %d %d %s",
+    while(fscanf(ft, "%d %s %s %d %d %d %s %d %d",
                 &sport.id, sport.nume, fam, &sport.dn.zi, &sport.dn.luna, &sport.dn.an,
-                &sport.dis, &sport.inalt, &sport.greu, &sport.categoria)!= EOF)
+                &sport.dis, &sport.inalt, &sport.greu)!= EOF)
     {
         strcat(sport.nume, " ");
         strcat(sport.nume, fam);
         printf("\n%s", sport.nume);
         fwrite(&sport, sizeof(Sport),1, f);
     }
-    printf("Ok");
+    printf("\nOk");
     fclose(ft);
     fclose(f);
 }
