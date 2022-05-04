@@ -13,8 +13,6 @@ struct Sport {
     int inalt;
     int greu;
     char categoria[21];
-
-
 };
 
 #endif // NSPORTIVI_H_INCLUDED

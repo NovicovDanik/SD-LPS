@@ -34,10 +34,10 @@ int main()
         cout << "6. Aranjare 1" << endl;
         cout << "7. Aranjare 2" << endl;
         cout << "8. Lista sportivilor petic" << endl;
-        cout << "9. Lista 2" << endl;
-        cout << "10. Lista 3" << endl;
-        cout << "11. Lista 4" << endl;
-        cout << "12. Lista 5" << endl;
+        cout << "9. Lista sportivilor cu inaltimea mica" << endl;
+        cout << "10. Lista sportivilor cu inaltimea medie" << endl;
+        cout << "11. Lista sportivilor cu inaltimea mare" << endl;
+        cout << "12. Lista sportivilor gigant" << endl;
         cout << "0. Stop" << endl;
         cout << "\n\t Alege de la 0 la 12 -> ";
         cin>>opt;

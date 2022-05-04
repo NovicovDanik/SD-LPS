@@ -78,5 +78,18 @@ void Adaugare()
 }
 void Modificare()
 {
+    FILE *f;
+    Sport sportivi[100];
+    Sport sport;
+    char fam[15];
+    int i = 0;
+    f = fopen("file.in", "rb");
 
+    while(fread(&sport, sizeof(Sport), 1, f) > 0)
+    {
+      sportivi[i] = sport;
+      i++;
+    }
+    printf("\nOk");
+    fclose(f);
 }
