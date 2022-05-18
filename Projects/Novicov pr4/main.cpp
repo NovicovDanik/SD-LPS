@@ -6,12 +6,16 @@
 #define NMAX 10
 using namespace std;
 //Interfata programului
-int Citire(int n, int a[]); //La intrare: n - numarul de elemente; La iesire: a - tabloul de inaltime; Functia intoarce: 1 - OK; 0 - Eroare
-void Afisare(int l, int c, int a[NMAX][NMAX], char s[]); //La intrare: n - numarul de elemente, a - tabloul de inaltime;
-void Afisare(int n, int a[], char b[10][20]);
+int Citire(int n, int a[]);
+void Afisare(int l, int c, int a[NMAX][NMAX], char s[]);
+
 //void Afisare(int n, int a[], char s[], char gen);
-int Minimum(int l, int c, int a[NMAX][NMAX]); //La intrare: n - numarul de elemente, a - tabloul de inaltime; La iesire: valoare minima;
-int Maximum(int l, int c, int a[NMAX][NMAX]); //La intrare: n - numarul de elemente, a - tabloul de inaltime; La iesire: valoare maxima;
+int Minimum(int l, int c, int a[NMAX][NMAX]);
+int Maximum(int l, int c, int a[NMAX][NMAX]);
+int Interschimb(int l, int c, int a[NMAX][NMAX]);
+int AdaugLinia(int &l, int &c, int a[NMAX][NMAX]);
+int Aranjare(int l, int c, int a[NMAX][NMAX]);
+
 float Media(int n, int a[]); //La intrare: n - numarul de elemente, a - tabloul de inaltime; La iesire: valoare medie;
 int Sortare(int n, int a[]);//La intrare: n - numarul de elemente, a - tabloul de inaltime; La iesire: a - tabloul aranjat; Functia intoarce: 1 - OK; 0 - Eroare
 int Rotire(int n, int a[]); //La intrare: n - numarul de elemente, a - tabloul de inaltime; La iesire: a - tabloul rotit; Functia intoarce: 1 - OK; 0 - Eroare
@@ -45,7 +49,7 @@ int main()
         cout << "Proiect nr.4 elaborat de Novicov Daniil" << endl;
         cout << "Tema: Inaltimile sportivilor la o competitie" << endl;
         cout << "\n1. De determinat intr-o matrice valorile minima si maxima si pozitiile lor";
-        cout << "\n2. De interschimbat 2 linii (variantele impare)";
+        cout << "\n2. De interschimbat 2 linii";
         cout << "\n3. De adaugat o linie si / sau coloana, de completat cu caracteristica conform variantei";
         cout << "\n4. De aranjat o matrice dupa linia sau coloana adaugata";
         cout << "\n5. De generat o matrice conform variantei";
@@ -54,9 +58,24 @@ int main()
         switch(key)
         {
             case 1:
-                Afisare(l, c, inaltime, " inital");
+                Afisare(l, c, inaltime, "inital");
                 Minimum(l, c, inaltime);
                 Maximum(l, c, inaltime);
+                break;
+            case 2:
+                Afisare(l, c, inaltime, "inital");
+                Interschimb(l, c, inaltime);
+                Afisare(l, c, inaltime, "schimbata");
+                break;
+            case 3:
+                Afisare(l, c, inaltime, "inital");
+                AdaugLinia(l, c, inaltime);
+                Afisare(l, c, inaltime, "adaugata");
+                break;
+            case 4:
+                Afisare(l, c, inaltime, "inital");
+                Aranjare(l, c, inaltime);
+                Afisare(l, c, inaltime, "aranjata");
                 break;
         /*case 2:
                 Afisare (n,inaltime, " inital");
@@ -183,6 +202,75 @@ int Maximum(int l, int c, int a[NMAX][NMAX])
         cout << "\nInaltimea maxima sportivului cu nr." << i+1 << " este: " << aux << endl;
     }
     return aux;
+}
+int Interschimb(int l, int c, int a[NMAX][NMAX])
+{
+    int lb, le;
+
+    int temp;
+    cout << "Introduceti linia 1 ";
+    cin >> lb;
+    cout << "Introduceti linia 2 ";
+    cin >> le;
+    for (int j = 0; j < c; j++)
+    {
+        temp = a[lb-1][j];
+        a[lb-1][j] = a[le-1][j];
+        a[le-1][j] = temp;
+    }
+
+	return 0;
+}
+int AdaugLinia(int &l, int &c, int a[NMAX][NMAX])
+{
+    float AdLinia;
+    for (int j = 0; j < c; j++)
+    {
+        AdLinia = 0;
+        for (int i = 0; i < l; i++)
+        {
+              AdLinia += a[i][j];
+;
+        }
+        AdLinia = (float)(AdLinia/l);
+        a[l][j] = AdLinia;
+    }
+    l++;
+    return 1;
+}
+int Aranjare(int l, int c, int a[NMAX][NMAX])
+{
+    int aux;
+    int key;
+            for (int h = 0; h < c-2; h++)
+            {
+             for (int j = 0; j < c-2; j++)
+            {
+                if (a[l-1][j] == a[l-1][j+1])
+                {
+
+
+                        for (int i = 0; i < l; i++)
+                        {
+                            aux = a[i][j];
+                            a[i][j] = a[i][j+1];
+                            a[i][j+1] = aux;
+                        }
+
+                }
+                else if (a[l-1][j] < a[l-1][j+1])
+                {
+                    for (int i = 0; i < l; i++)
+                    {
+                        aux = a[i][j];
+                        a[i][j] = a[i][j+1];
+                        a[i][j+1] = aux;
+                    }
+                }
+            }
+            }
+
+    return 1;
 }
 float Media(int n, int a[])
 {
