@@ -1,12 +1,5 @@
 # depslib dependency file v1.0
-1652459458 source:c:\users\katreen\desktop\”роки\”ник\structuri discrete\programs\projects\novicov pr4\main.cpp
-	<iostream>
-	<stdlib.h>
-	<math.h>
-	<iomanip>
-	<conio.h>
-
-1652861014 source:d:\novicov daniil is11z\sd-lps-main\projects\novicov pr4\main.cpp
+1653331721 source:c:\users\katreen\desktop\”роки\”ник\structuri discrete\programs\projects\novicov pr4\main.cpp
 	<iostream>
 	<stdlib.h>
 	<math.h>

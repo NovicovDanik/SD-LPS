@@ -15,7 +15,7 @@ int Maximum(int l, int c, int a[NMAX][NMAX]);
 int Interschimb(int l, int c, int a[NMAX][NMAX]);
 int AdaugLinia(int &l, int &c, int a[NMAX][NMAX]);
 int Aranjare(int l, int c, int a[NMAX][NMAX]);
-
+int Generare(int s, int b[NMAX][NMAX]);
 
 int main()
 {
@@ -23,6 +23,7 @@ int main()
     int n = 10, poz = 5, m = 5;
     int ncaut;
     int val;
+    int b[NMAX][NMAX];
     int l = 3 , c = 3;
     int inaltime[NMAX][NMAX] = { {171, 176, 174},{173, 172, 175},{177, 178, 180} };
     char nume [][20] = { " pitic",  " inaltimea mica" ," inaltimea medie" , " inaltimea mare", " gigant"};
@@ -65,6 +66,13 @@ int main()
                 Afisare(l, c, inaltime, "inital");
                 Aranjare(l, c, inaltime);
                 Afisare(l, c, inaltime, "aranjata");
+                break;
+            case 5:
+                Afisare(l, c, inaltime, "inital");
+                cout << "n = ";
+                cin >> n;
+                Generare(n, b);
+                Afisare(n, n, b, "generata");
                 break;
         }
         getch();
@@ -182,9 +190,9 @@ int Aranjare(int l, int c, int a[NMAX][NMAX])
 {
     int aux;
     int key;
-            for (int h = 0; h < c-2; h++)
+            for (int h = 0; h < c-1; h++)
             {
-             for (int j = 0; j < c-2; j++)
+             for (int j = 0; j < c-1; j++)
             {
                 if (a[l-1][j] == a[l-1][j+1])
                 {
@@ -212,4 +220,30 @@ int Aranjare(int l, int c, int a[NMAX][NMAX])
 
     return 1;
 }
+int Generare(int s, int b[NMAX][NMAX])
+{
+    int aux = 1;
+        for(int i = 0; i < s; ++i)
+        {
+       if(i % 2 == 0)
+       {
+          for(int j = 0; j < s; ++j)
+          {
+           b[i][j] = aux;
+            aux++;
+          }
 
+       }
+       else
+       {
+          for(int j = s; j > 0; )
+          {
+           b[i][--j] = aux;
+            aux++;
+          }
+
+       }
+
+        }
+    return 1;
+}
