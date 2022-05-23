@@ -50,7 +50,7 @@ void Afisare()
      while(fread(&sport, sizeof(Sport),1, f)>0)
      {
          n++;
-         printf("\n%c%3d%c %d %c%-25.25s%c%02d.%02d.%4d%6c%-15.15s%c %3d %c %3d %c %d %c",
+         printf("\n%c%3d%c %d %c%-25.25s%c%02d.%02d.%4d%6c%-15.15s%c %3d %c %3d %c  %d  %c",
             186, n, 179, sport.id, 179, sport.nume, 179, sport.dn.zi,sport.dn.luna,sport.dn.an, 179, sport.dis ,179, sport.inalt, 179, sport.greu, 179, sport.categoria, 186);
      }
      Linia(200, 205, 207, 188);

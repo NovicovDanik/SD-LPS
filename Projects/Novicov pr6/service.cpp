@@ -5,43 +5,108 @@
 #include "nsportivi.h"
 void AranjareAlfabetica()
 {
-
+  FILE *f;
+    Sport sportivi[100];
+    Sport spor, aux;
+    char fam[15];
+    int i = 0;
+    int cit = 0;
+    f = fopen("file.in", "rb");
+    while(fread(&spor, sizeof(Sport), 1, f) > 0)
+    {
+        sportivi[i] = spor;
+        i++;
+        cit = i;
+    }
+    fclose(f);
+    for(i = 0; i < cit; i++)
+    {
+        bool flag = true;
+        for(int j = 0; j < cit - (i+1); j++)
+        {
+            int cmp = strcmp(sportivi[j].nume, sportivi[j+1].nume);
+            if (cmp > 0)
+            {
+                flag = false;
+                aux = sportivi[j];
+                sportivi[j] = sportivi[j+1];
+                sportivi[j+1] = aux;
+            }
+        }
+        if (flag) break;
+    }
+    f = fopen("file.in", "wb");
+    for (i = 0; i < cit; i++)
+    {
+       fwrite(&sportivi[i], sizeof(Sport), 1, f);
+    }
+    fclose(f);
+    printf("\nAranjarea a fost facuta");
 }
 void AranjareCat()
 {
+    FILE *f;
+    Sport sportivi[100];
+    Sport spor, aux;
+    char fam[15];
+    int i = 0;
+    int cit = 0;
+    f = fopen("file.in", "rb");
+    while(fread(&spor, sizeof(Sport), 1, f) > 0)
+    {
+        sportivi[i] = spor;
+        i++;
+        cit = i;
+    }
+    fclose(f);
+    for(i = 0; i < cit; i++)
+    {
+        bool flag = true;
+        for(int j = 0; j < cit - (i+1); j++)
+        {
 
+            if (sportivi[j].categoria > sportivi[j+1].categoria)
+            {
+                flag = false;
+                aux = sportivi[j];
+                sportivi[j] = sportivi[j+1];
+                sportivi[j+1] = aux;
+            }
+        }
+        if (flag) break;
+    }
+    f = fopen("file.in", "wb");
+    for (i = 0; i < cit; i++)
+    {
+       fwrite(&sportivi[i], sizeof(Sport), 1, f);
+    }
+    fclose(f);
+    printf("\nAranjarea a fost facuta");
 }
 void AdaugCat()
 {
-    /*FILE *f;
+    FILE *f;
     Sport sportivi[100];
     Sport sport;
     char fam[15];
     int i = 0;
-    int gigant = 0 , mare = 0, medie = 0 , mic = 0 , pitic = 0;
+    int cit = 0;
     f = fopen("file.in", "rb");
     while(fread(&sport, sizeof(Sport), 1, f) > 0)
     {
         sportivi[i] = sport;
-        for (i = 0; i < 100 ; i++)
-        {
-             if (sportivi[i] >= 195 ) gigant++;
-        else if (sportivi[i] >= 185) mare++;
-        else if (sportivi[i] >= 170) medie++;
-        else if (sportivi[i] >= 150) mic++;
-        else pitic++;
-        }
-
+        if (sportivi[i].inalt >= 185) sportivi[i].categoria = 1;
+        else if (sportivi[i].inalt >= 170 && sportivi[i].inalt < 185 ) sportivi[i].categoria = 2;
+        else if (sportivi[i].inalt < 170 ) sportivi[i].categoria = 3;
         i++;
+        cit = i;
     }
-    printf("\nOk");
     fclose(f);
     f = fopen("file.in", "wb");
-    for (i = 0; i < 100 ; i++)
+    for (i = 0; i < cit; i++)
     {
-
-      fwrite(fread(&sport[i], sizeof(Sport), 1, f));
-    {
-    printf("\nOkOk");
-    fclose(f);*/
+       fwrite(&sportivi[i], sizeof(sport), 1, f);
+    }
+    fclose(f);
+    printf("\nCategoriile au fost adaugate");
 }

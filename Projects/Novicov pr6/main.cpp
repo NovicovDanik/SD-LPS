@@ -30,10 +30,10 @@ int main()
         cout << "2. Afisare" << endl;
         cout << "3. Adaugare" << endl;
         cout << "4. Modificare" << endl;
-        cout << "5. Adaug Media" << endl;
-        cout << "6. Aranjare 1" << endl;
-        cout << "7. Aranjare 2" << endl;
-        cout << "8. Lista sportivilor petic" << endl;
+        cout << "5. Adaugare Categorie" << endl;
+        cout << "6. Aranjare Alfabetica" << endl;
+        cout << "7. Aranjare Categorii" << endl;
+        cout << "8. Lista sportivilor pitic" << endl;
         cout << "9. Lista sportivilor cu inaltimea mica" << endl;
         cout << "10. Lista sportivilor cu inaltimea medie" << endl;
         cout << "11. Lista sportivilor cu inaltimea mare" << endl;
