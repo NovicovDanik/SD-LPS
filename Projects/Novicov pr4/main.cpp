@@ -6,10 +6,8 @@
 #define NMAX 10
 using namespace std;
 //Interfata programului
-int Citire(int n, int a[]);
-void Afisare(int l, int c, int a[NMAX][NMAX], char s[]);
 
-//void Afisare(int n, int a[], char s[], char gen);
+void Afisare(int l, int c, int a[NMAX][NMAX], char s[]);
 int Minimum(int l, int c, int a[NMAX][NMAX]);
 int Maximum(int l, int c, int a[NMAX][NMAX]);
 int Interschimb(int l, int c, int a[NMAX][NMAX]);
@@ -20,19 +18,12 @@ int Generare(int s, int b[NMAX][NMAX]);
 int main()
 {
     int key;
-    int n = 10, poz = 5, m = 5;
+    int n = 10;
     int ncaut;
     int val;
     int b[NMAX][NMAX];
     int l = 3 , c = 3;
     int inaltime[NMAX][NMAX] = { {171, 176, 174},{173, 172, 175},{177, 178, 180} };
-    char nume [][20] = { " pitic",  " inaltimea mica" ," inaltimea medie" , " inaltimea mare", " gigant"};
-    int categorii[] = {0,0,0,0,0,0};
-    int gener[NMAX];
-    /*cout <<"Introduceti cati oameni sunt intr-o echipa: " ;
-    cin >> n ;
-    Citire(n, inaltime);*/
-    cout << "Tabloul de inaltime ocupa: " << sizeof(inaltime) << " Bt" << endl;
     do
     {
         system("cls");
@@ -40,7 +31,7 @@ int main()
         cout << "Tema: Inaltimile sportivilor la o competitie" << endl;
         cout << "\n1. De determinat intr-o matrice valorile minima si maxima si pozitiile lor";
         cout << "\n2. De interschimbat 2 linii";
-        cout << "\n3. De adaugat o linie si / sau coloana, de completat cu caracteristica conform variantei";
+        cout << "\n3. De adaugat o linie de completat cu inaltimea medie";
         cout << "\n4. De aranjat o matrice dupa linia sau coloana adaugata";
         cout << "\n5. De generat o matrice conform variantei";
         cout << "\n\n\t Alegeti de la 0 la 5 -> ";
@@ -80,35 +71,7 @@ int main()
 
     return 0;
 }
-int Citire(int n, int a[])
-{
-    int key;
-    int i;
-        cout << "\n 1. De la tastatura";
-        cout << "\n 2. De generat aleator";
-        cout << "\n 3. De generat intr-un mod special";
-        cout << "\n 4. Din fisier";
-        cout << "\n 5. Implicit";
-        cout << "\n\n\t Alege -> ";
-        cin >> key;
-        switch(key) {
-             case 1:
-                 for (i = 0; i < n; i++) {
-                 cout << "Inaltimea sportivului cu nr. " << i + 1 << ": ";
-                 cin >> a[i];
-        }
-                 break;
-             case 2:
-                for (i = 0; i < n; i++)
-                a[i] = rand() % 201 + 50;
-                break;
-             case 3:
-                for (i = 0; i < n; i++)
-                a[i] = i % 50 + 150;
-                break;
-    }
-    return 1;
-}
+
 void Afisare(int l, int c, int a[NMAX][NMAX], char s[])
 {
     cout << "\nMatricea de inaltime " << s << " \n";
