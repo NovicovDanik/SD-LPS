@@ -87,7 +87,7 @@ long int Demlo(int n)
     int power = 1;
     for (int i = 1; i <= n; i++)
         power *= 10;
-        cout << (((power - 1) / 9)*((power - 1) / 9));
+        //cout << (((power - 1) / 9)*((power - 1) / 9));
         return (((power - 1) / 9)*((power - 1) / 9));
     //return pow((power - 1)/ 9, 2);
  //pow(((pow(10, n) - 1) / 9), 2 );
