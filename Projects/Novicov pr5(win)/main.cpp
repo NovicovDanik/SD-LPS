@@ -25,7 +25,7 @@ int CopiaRezerva(char nume[]);
 int main()
 {
     int opt;
-    char fraza[81] = "Ana Virlan prieteneste cu Ana Cabac, iar Daniil Novicov - nu.";
+    char fraza[81] = "Cred ca voi cumpara masina rosie sau o voi inchiria pe cea albastra.";
     cout << "Proiect nr.5 elaborat de Novicov Daniil" << endl;
     cout << "Tema: Siruri de caractere. Fisiere text" << endl;
     do {
