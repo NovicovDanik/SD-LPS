@@ -27,15 +27,15 @@ bool Palindrome(int n);
 int main()
 {
     int key;
-    int n = 10, poz = 5, m = 5;
+    int n = 20, poz = 5, m = 5;
     int ncaut;
     int val;
     int inaltime[NMAX] = { 171, 176, 174, 173, 172, 175, 177, 178, 180, 179 };
     char nume [][20] = { " pitic",  " inaltimea mica" ," inaltimea medie" , " inaltimea mare", " gigant"};
     int categorii[] = {0,0,0,0,0,0};
     int gener[NMAX];
-    cout <<"Introduceti cati oameni sunt intr-o echipa: " ;
-    cin >> n ;
+    /*cout <<"Introduceti cati oameni sunt intr-o echipa: " ;
+    cin >> n ;*/
     Citire(n, inaltime);
     cout << "Tabloul de inaltime ocupa: " << sizeof(inaltime) << " Bt" << endl;
     do
@@ -122,7 +122,7 @@ int Citire(int n, int a[])
                  break;
              case 2:
                 for (i = 0; i < n; i++)
-                a[i] = rand() % 201 + 50;
+                a[i] = rand() % 50 + 150;
                 break;
              case 3:
                 for (i = 0; i < n; i++)
@@ -135,14 +135,14 @@ void Afisare(int n, int a[] ,char s[])
 {
     cout << "\nTabloul de inaltime " << s <<"\n";
     for (int i = 0 ; i < n; i++)
-        cout << setw(8) << a[i];
+        cout << setw(10) << a[i];
         cout << endl;
 }
 void Afisare(int n, int a[], char s[], char gen)
 {
     cout << "\nTabloul de valori " << s << "\n";
     for (int i = 0; i < n; i++)
-        cout << setw(8) << a[i];
+        cout << setw(10) << a[i];
         cout << endl;
 }
 void Afisare(int n, int a[] ,char b[10][20])
