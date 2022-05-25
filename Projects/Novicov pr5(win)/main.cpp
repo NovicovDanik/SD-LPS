@@ -37,16 +37,15 @@ int main()
         cout << "\n 5. Cuvintele lungimea carora e mai mare ca 6 dintr-un fisier";
         cout << "\n 6. Cuvinte lungimea carora e mai mica decat 5 dintr-un fisier";
         cout << "\n 7. De inscris in alt fisier text cuvintele, care e mai mica decat 5";
-        cout << "\n 8. De sters cuvintele de lungime mai mica decat 5";
-        cout << "\n 9. Copia de Rezerva a fisierului";
+        cout << "\n 8. Copia de Rezerva a fisierului";
         cout << "\n 0. Stop";
         cout << "\n\n\t Alege de la 0 la 8 -> ";
         cin >> opt;
         switch(opt)
         {
             case 1:
-                cout << "Introduceti o fraza:\n";
-                fflush(stdin); gets(fraza);
+                /*cout << "Introduceti o fraza:\n";
+                fflush(stdin); gets(fraza);*/
                 cout << "Fraza initiala \n";
                 puts(fraza);
                 if (int n = NrCuvinte(fraza))
@@ -94,11 +93,6 @@ int main()
                 TransferCuvinteLungMic5();
                 break;
             case 8:
-                cout << "Fraza initiala din fisier: \n";
-                ViewFile("frazfile.in");
-                EliminaCuvinteLungMic5("frazfile.in");
-                break;
-            case 9:
                 CopiaRezerva("frazfile.in");
                 cout << "Copia a fost facuta";
                 break;
