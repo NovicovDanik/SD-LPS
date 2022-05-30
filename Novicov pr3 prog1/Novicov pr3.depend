@@ -1,0 +1,42 @@
+# depslib dependency file v1.0
+1646132941 source:c:\users\katreen\desktop\”роки\”ник\structuri discrete\programs\novicov pr3\main.cpp
+	<iostream>
+	<stdlib.h>
+	<iomanip>
+	<conio.h>
+
+1646856869 source:c:\users\katreen\desktop\”роки\”ник\structuri discrete\programs\projects\novicov pr3\main.cpp
+	<iostream>
+	<stdlib.h>
+	<math.h>
+	<iomanip>
+	<conio.h>
+
+1646994844 source:d:\novicov daniil is11z\sd-lps-main\projects\novicov pr3\main.cpp
+	<iostream>
+	<stdlib.h>
+	<math.h>
+	<iomanip>
+	<conio.h>
+
+1647287250 source:c:\users\katreen\desktop\”роки\”ник\structuri discrete\programs\projects\novicov pr3 prog\main.cpp
+	<iostream>
+	<stdlib.h>
+	<math.h>
+	<iomanip>
+	<conio.h>
+
+1647339727 source:d:\novicov daniil is11z\sd-lps-main\projects\novicov pr3 prog\main.cpp
+	<iostream>
+	<stdlib.h>
+	<math.h>
+	<iomanip>
+	<conio.h>
+
+1653920563 source:d:\novicov daniil is11z\sd-lps-main\projects\novicov pr3 prog1\main.cpp
+	<iostream>
+	<stdlib.h>
+	<math.h>
+	<iomanip>
+	<conio.h>
+
