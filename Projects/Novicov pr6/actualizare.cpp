@@ -34,7 +34,17 @@ void Linia (int st, int lin, int mij, int dr)
     for (i=1; i<=15; i++) printf("%c", lin); printf("%c", mij);
     for (i=1; i<=5; i++) printf("%c", lin); printf("%c", mij);
     for (i=1; i<=5; i++) printf("%c", lin); printf("%c", mij);
-    for (i=1; i<=5; i++) printf("%c", lin); printf("%c", dr);
+    for (i=1; i<=11; i++) printf("%c", lin); printf("%c", dr);
+}
+char* NumeCat(int i)
+{
+    switch(i){
+        case 1:return "gigant"; break;
+        case 2: return "mediu" ; break;
+        case 3: return "pitic"; break;
+
+    }
+    return "noname";
 }
 void Afisare()
 {
@@ -44,14 +54,15 @@ void Afisare()
      f = fopen("file.in", "rb");
      printf("\n Lista initiala a sportivilor");
      Linia(201, 205, 209, 187);
-     printf("\n%c Nr%c ID %2c Numele sportivilor %6cData nasterii%3cDisciplina%6cInalt%cGreut%cCateg%c",
+     printf("\n%c Nr%c ID %2c Numele sportivilor %6cData nasterii%3cDisciplina%6cInalt%cGreut%c Categoria %c",
             186, 179, 179, 179, 179, 179, 179, 179, 186);
      Linia(199, 196, 197, 182);
      while(fread(&sport, sizeof(Sport),1, f)>0)
      {
          n++;
-         printf("\n%c%3d%c %d %c%-25.25s%c%02d.%02d.%4d%6c%-15.15s%c %3d %c %3d %c  %d  %c",
-            186, n, 179, sport.id, 179, sport.nume, 179, sport.dn.zi,sport.dn.luna,sport.dn.an, 179, sport.dis ,179, sport.inalt, 179, sport.greu, 179, sport.categoria, 186);
+         printf("\n%c%3d%c %d %c%-25.25s%c%02d.%02d.%4d%6c%-15.15s%c %3d %c %3d %c %-9.9s %c",
+            186, n, 179, sport.id, 179, sport.nume, 179, sport.dn.zi,sport.dn.luna,sport.dn.an,
+            179, sport.dis ,179, sport.inalt, 179, sport.greu, 179,  NumeCat(sport.categoria), 186);
      }
      Linia(200, 205, 207, 188);
      fclose(f);

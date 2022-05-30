@@ -1,26 +1,31 @@
 # depslib dependency file v1.0
-1650362267 source:d:\novicov daniil is11z\sd-lps-main\projects\novicov pr6\liste.cpp
+1653366962 source:d:\novicov daniil is11z\sd-lps-main\projects\novicov pr6\liste.cpp
 	<stdio.h>
 	<string.h>
 	<cstdlib>
 	<conio.h>
 	"nsportivi.h"
 
-1650355903 source:d:\novicov daniil is11z\sd-lps-main\projects\novicov pr6\service.cpp
+1653366962 source:d:\novicov daniil is11z\sd-lps-main\projects\novicov pr6\service.cpp
+	<stdio.h>
+	<string.h>
+	<cstdlib>
+	<conio.h>
+	"nsportivi.h"
 
-1650361838 source:d:\novicov daniil is11z\sd-lps-main\projects\novicov pr6\main.cpp
+1653908747 source:d:\novicov daniil is11z\sd-lps-main\projects\novicov pr6\main.cpp
 	<iostream>
 	<cstdlib>
 	<conio.h>
 
-1650362243 source:d:\novicov daniil is11z\sd-lps-main\projects\novicov pr6\actualizare.cpp
+1653917313 source:d:\novicov daniil is11z\sd-lps-main\projects\novicov pr6\actualizare.cpp
 	<stdio.h>
 	<string.h>
 	<cstdlib>
 	<conio.h>
 	"nsportivi.h"
 
-1650360842 d:\novicov daniil is11z\sd-lps-main\projects\novicov pr6\nsportivi.h
+1653366962 d:\novicov daniil is11z\sd-lps-main\projects\novicov pr6\nsportivi.h
 
 1653328340 source:c:\users\katreen\desktop\”роки\”ник\structuri discrete\programs\projects\novicov pr6\actualizare.cpp
 	<stdio.h>

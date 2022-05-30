@@ -26,10 +26,10 @@ int main()
         system("cls");
         cout << "Proiect nr.6 elaborat de Novicov Daniil" << endl;
         cout << "Tema: Structuri. Fisiere Binare. Fisiere Proiect" << endl;
-        cout << "1. Inscriere" << endl;
-        cout << "2. Afisare" << endl;
-        cout << "3. Adaugare" << endl;
-        cout << "4. Modificare" << endl;
+        cout << "1. Inscriere datelor initiale a sportivilor" << endl;
+        cout << "2. Afisare datelor" << endl;
+        cout << "3. Adaugare datelor in fisier" << endl;
+        cout << "4. Modificare datelor" << endl;
         cout << "5. Adaugare Categorie" << endl;
         cout << "6. Aranjare Alfabetica" << endl;
         cout << "7. Aranjare Categorii" << endl;
